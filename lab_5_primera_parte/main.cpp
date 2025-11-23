@@ -1,9 +1,13 @@
 #include <iostream>
+#include <particula.h>
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    cout<<"hola mundo"<<endl;
+    Particula miParticula;
+    miParticula.mensaje();
+    cin.get();
     return 0;
 }
