@@ -16,6 +16,8 @@ public:
     void moverprueba();
     void moverMRU();//De prueba para pasar al movimiento parabolico
     void CalcularVelocidad();
+    void CalcularPosicion();
+    void ActualizarVelocidad();
     double getX() const;
     double getY() const;
 };
