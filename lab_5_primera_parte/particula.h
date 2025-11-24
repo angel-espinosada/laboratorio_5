@@ -7,7 +7,7 @@ class Particula
 private:
     //Atributos
     double x,y,v,ang,vx,vy;
-    double t,g;
+    double t,g, tiempo_total;
 
 public:
     Particula();
@@ -18,6 +18,7 @@ public:
     void CalcularVelocidad();
     void CalcularPosicion();
     void ActualizarVelocidad();
+    void moverpaso();
     double getX() const;
     double getY() const;
 };

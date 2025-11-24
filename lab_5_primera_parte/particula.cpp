@@ -10,6 +10,8 @@ Particula::Particula(double x, double y, double v, double ang)
     this->ang=ang;
     t=0.01;
     g=9.8;
+    tiempo_total=0;
+    CalcularVelocidad();
 }
 
 void Particula::mensaje()
@@ -30,20 +32,28 @@ void Particula::moverMRU()
 
 void Particula::CalcularVelocidad()
 {
-    vx=v*cos(ang);
-    vy=v*sin(ang)-g*t;
+    //velocidad incial
+    vx = v * cos(ang);
+    vy = v * sin(ang);
 }
 
 void Particula::CalcularPosicion()
 {
-    vx=v*cos(ang);
-    vy=v*sin(ang)-g*t;
+    x = x + vx * t;
+    y = y + vy * t - 0.5 * g * t * t;
+
+    tiempo_total += t; // Ahora sí funciona
 }
 
 void Particula::ActualizarVelocidad()
 {
-    v=sqrt(pow(vx,2)+pow(vy,2));
-    ang=atan2(vy,vx);
+    vy = vy - g * t;   // aceleración vertical
+}
+
+void Particula::moverpaso()
+{
+    CalcularPosicion();      // mueve x,y
+    ActualizarVelocidad();   // modifica vy para el siguiente paso
 }
 
 double Particula::getX() const

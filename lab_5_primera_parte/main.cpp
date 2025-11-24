@@ -21,20 +21,14 @@ int main()
 
     }
 
-    Particula paraboli(2,4,5,6);
+    Particula paraboli(0,0,15, 45 * M_PI / 180);
     for(int i= 0; i<9; i++){
 
-        paraboli.CalcularVelocidad();
-        cout<<"Valor de x"<<paraboli.getX()<<"Valor de y"<<paraboli.getY()<<endl;
+        paraboli.moverpaso();
+        cout<<"Valor de x "<<paraboli.getX()<<" Valor de y "<<paraboli.getY()<<endl;
     }
 
-    for(int i=0; i<20;i++)
-    {
-        miParticula.CalcularVelocidad();
-        miParticula.CalcularPosicion();
-        miParticula.ActualizarVelocidad();
-        cout<<miParticula.getX()<<'\t'<<miParticula.getY()<<endl;
-    }
+
 
 
     cin.get();
