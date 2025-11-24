@@ -22,7 +22,7 @@ int main()
     }
 
     Particula paraboli(0,0,15, 45 * M_PI / 180);
-    for(int i= 0; i<9; i++){
+    for(int i= 0; i<300; i++){
 
         paraboli.moverpaso();
         cout<<"Valor de x "<<paraboli.getX()<<" Valor de y "<<paraboli.getY()<<endl;

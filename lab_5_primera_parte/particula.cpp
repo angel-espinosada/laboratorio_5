@@ -53,7 +53,27 @@ void Particula::ActualizarVelocidad()
 void Particula::moverpaso()
 {
     CalcularPosicion();      // mueve x,y
+    chequearPiso(0);
+    chequearTecho(5);
     ActualizarVelocidad();   // modifica vy para el siguiente paso
+}
+
+void Particula::chequearTecho(double techo)
+{
+    if (y >= techo) {
+        y = techo;   // Evita que se pase del techo
+        vy = -vy;    // Rebote vertical
+        cout<<"Toco techo "<<y<<endl;
+    }
+}
+
+void Particula::chequearPiso(double piso)
+{
+    if (y <= piso) {
+        y = piso;        // corregir posicion
+        vy = -vy;     // invertir velocidad vertical
+        cout<<"Toco piso "<<y<<endl;
+}
 }
 
 double Particula::getX() const

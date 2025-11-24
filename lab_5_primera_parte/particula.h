@@ -19,6 +19,10 @@ public:
     void CalcularPosicion();
     void ActualizarVelocidad();
     void moverpaso();
+    void chequearTecho(double techo);
+    void chequearparedIz(double parIz);
+    void chequearParedDer(double parDer);
+    void chequearPiso(double piso);
     double getX() const;
     double getY() const;
 };
