@@ -55,6 +55,9 @@ void Particula::moverpaso()
     CalcularPosicion();      // mueve x,y
     chequearPiso(0);
     chequearTecho(5);
+    chequearParedDer(10);
+    chequearparedIz(0);
+
     ActualizarVelocidad();   // modifica vy para el siguiente paso
 }
 
@@ -64,6 +67,24 @@ void Particula::chequearTecho(double techo)
         y = techo;   // Evita que se pase del techo
         vy = -vy;    // Rebote vertical
         cout<<"Toco techo "<<y<<endl;
+    }
+}
+
+void Particula::chequearparedIz(double parIz)
+{
+    if (x <= parIz) {
+        x = parIz;     // evitar traspaso
+        vx = -vx;     // rebote horizontal
+        cout << "Tocó la PARED IZQUIERDA"<<endl;
+    }
+}
+
+void Particula::chequearParedDer(double parDer)
+{
+    if (x >= parDer) {
+        x = parDer;    // evitar traspaso
+        vx = -vx;    // rebote horizontal
+        cout << "Tocó la PARED DERECHA"<<endl;
     }
 }
 
