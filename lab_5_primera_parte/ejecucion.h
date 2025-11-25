@@ -10,7 +10,7 @@ class Ejecucion
 private:
     vector<Particula>particulas;
     double parIz, parDer;
-    double piso, techo;
+    double piso, techo, tiempo;
     ofstream archivo;
 
 public:

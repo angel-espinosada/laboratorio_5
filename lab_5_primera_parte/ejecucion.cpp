@@ -9,6 +9,7 @@ Ejecucion::Ejecucion(double parIz, double parDer, double piso, double techo){
     this->parDer = parDer;
     this->piso = piso;
     this->techo = techo;
+    tiempo=0.00;
 }
 
 void Ejecucion::agregarParticula(const Particula &p)
@@ -27,7 +28,21 @@ void Ejecucion::actualizar()
         p.chequearTecho(techo);          // Techo
     }
      detectarColisionesEntreParticulas();
+    if (archivo.is_open()) {
+        archivo << "t=" << tiempo;
+    cout << "Guardando línea en archivo..." << endl;
+        for (size_t i = 0; i < particulas.size(); i++) {
+            archivo << " | P" << i
+                    << ": x=" << particulas[i].getX()
+                    << " y=" << particulas[i].getY();
+        }
+    cout << "Guardando línea en archivo..." << endl;
+        archivo << "\n";  // salto de línea
+    }
+
+    tiempo += 0.01; // avanzar el tiempo
 }
+
 
 void Ejecucion::mostrarEstado() const
 {

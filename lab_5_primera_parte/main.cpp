@@ -51,6 +51,11 @@ int main()
         cout << "------------------------" << endl;
     }
     sim.abrirArchivo("datos.txt");
+    for (int i = 0; i < 200; i++) {
+        sim.actualizar();
+        sim.mostrarEstado();
+        cout << "------------------------\n";
+    }
     sim.cerrarArchivo();
 
     cin.get();
