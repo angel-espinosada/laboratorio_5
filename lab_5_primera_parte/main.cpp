@@ -50,6 +50,8 @@ int main()
         sim.mostrarEstado();
         cout << "------------------------" << endl;
     }
+    sim.abrirArchivo("datos.txt");
+    sim.cerrarArchivo();
 
     cin.get();
     return 0;

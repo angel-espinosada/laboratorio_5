@@ -59,3 +59,21 @@ void Ejecucion::detectarColisionesEntreParticulas()
         }
     }
 }
+
+void Ejecucion::abrirArchivo(const string &nombre)
+{
+    archivo.open(nombre);
+    if (!archivo.is_open()) {
+        cout << "Error al abrir archivo\n";
+    }
+    else{
+        cout<<"Abierto corectamente"<<endl;
+    }
+}
+
+void Ejecucion::cerrarArchivo()
+{
+    if (archivo.is_open()) {
+        archivo.close();
+    }
+}
