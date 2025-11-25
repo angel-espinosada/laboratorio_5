@@ -26,6 +26,7 @@ void Ejecucion::actualizar()
         p.chequearPiso(piso);           // Piso
         p.chequearTecho(techo);          // Techo
     }
+     detectarColisionesEntreParticulas();
 }
 
 void Ejecucion::mostrarEstado() const
@@ -34,5 +35,27 @@ void Ejecucion::mostrarEstado() const
     {
         cout<< "P" << i << ": x=" << particulas[i].getX()
         << " y=" << particulas[i].getY() << endl;
+    }
+}
+
+void Ejecucion::detectarColisionesEntreParticulas()
+{
+    for (size_t i = 0; i < particulas.size(); i++)
+    {
+        for (size_t j = i + 1; j < particulas.size(); j++)
+        {
+            double dx = particulas[j].getX() - particulas[i].getX();
+            double dy = particulas[j].getY() - particulas[i].getY();
+            double dist = sqrt(dx * dx + dy * dy);
+
+            double sumaRadios =
+                particulas[i].getRadio() + particulas[j].getRadio();
+
+            if (dist <= sumaRadios)
+            {
+                cout << "COLISION entre P" << i
+                     << " y P" << j << endl;
+            }
+        }
     }
 }

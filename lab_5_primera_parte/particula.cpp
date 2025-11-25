@@ -43,7 +43,7 @@ void Particula::CalcularVelocidad()
 void Particula::CalcularPosicion()
 {
     x = x + vx * t;
-    y = y + vy * t - 0.5 * g * t * t;
+    y = y + vy * t;
 
     tiempo_total += t; // Ahora sí funciona
 }
@@ -55,20 +55,31 @@ void Particula::ActualizarVelocidad()
 
 void Particula::moverpaso()
 {
-    ActualizarVelocidad();   // gravedad primero
-    CalcularPosicion();      // mover la partícula
+    // Guardar valores anteriores para debug
+    double x_ant = x;
+    double y_ant = y;
 
+    CalcularPosicion();
+    ActualizarVelocidad();
+
+    // DEBUG: imprimir cada 50 pasos
+    static int contador = 0;
+    if (contador++ % 50 == 0) {
+        cout << "MOVIMIENTO: (" << x_ant << "," << y_ant << ") -> ("
+             << x << "," << y << ") | vx=" << vx << " vy=" << vy << endl;
+    }
+/*
     // Después verificar colisiones
     chequearPiso(0);
     chequearTecho(5);
     chequearparedIz(0);
-    chequearParedDer(10);
+    chequearParedDer(10);*/
 }
 
 void Particula::chequearTecho(double techo)
 {
-    if (y >= techo) {
-        y = techo;   // Evita que se pase del techo
+    if (y +radio>= techo) {
+        y = techo-radio;   // Evita que se pase del techo
         vy = -vy;    // Rebote vertical
         cout<<"Toco techo "<<y<<endl;
     }
@@ -76,8 +87,8 @@ void Particula::chequearTecho(double techo)
 
 void Particula::chequearparedIz(double parIz)
 {
-    if (x <= parIz) {
-        x = parIz;     // evitar traspaso
+    if (x -radio<= parIz) {
+        x = parIz+radio;     // evitar traspaso
         vx = -vx;     // rebote horizontal
         cout << "Toco la PARED IZQUIERDA"<<endl;
     }
@@ -85,8 +96,8 @@ void Particula::chequearparedIz(double parIz)
 
 void Particula::chequearParedDer(double parDer)
 {
-    if (x >= parDer) {
-        x = parDer;    // evitar traspaso
+    if (x+radio >= parDer) {
+        x = parDer-radio;    // evitar traspaso
         vx = -vx;    // rebote horizontal
         cout << "Toco la PARED DERECHA"<<endl;
     }
@@ -94,8 +105,8 @@ void Particula::chequearParedDer(double parDer)
 
 void Particula::chequearPiso(double piso)
 {
-    if (y <= piso) {
-        y = piso;        // corregir posicion
+    if (y -radio<= piso) {
+        y = piso+radio;        // corregir posicion
         vy = -vy;     // invertir velocidad vertical
         cout<<"Toco piso "<<y<<endl;
 }
@@ -110,3 +121,24 @@ double Particula::getY() const
 {
     return y;
 }
+
+double Particula::getVx() const
+{
+    return vx;
+}
+
+double Particula::getVy() const
+{
+    return vy;
+}
+
+double Particula::getMasa() const
+{
+    return masa;
+}
+
+double Particula::getRadio() const
+{
+    return radio;
+}
+

@@ -16,6 +16,7 @@ public:
     void agregarParticula(const Particula& p);
      void actualizar();
      void mostrarEstado() const;
+     void detectarColisionesEntreParticulas();
 };
 
 #endif // EJECUCION_H

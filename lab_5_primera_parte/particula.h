@@ -26,6 +26,10 @@ public:
     void chequearPiso(double piso);
     double getX() const;
     double getY() const;
+    double getVx() const;
+    double getVy() const;
+    double getMasa() const;
+    double getRadio() const;
 };
 
 #endif // PARTICULA_H
