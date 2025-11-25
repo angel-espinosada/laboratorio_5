@@ -4,8 +4,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        ejecucion.cpp \
         main.cpp \
         particula.cpp
 
 HEADERS += \
+    ejecucion.h \
     particula.h

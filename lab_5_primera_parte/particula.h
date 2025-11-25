@@ -7,11 +7,12 @@ class Particula
 private:
     //Atributos
     double x,y,v,ang,vx,vy;
-    double t,g, tiempo_total;
+    double t,g, tiempo_total, masa;
+    double radio;
 
 public:
     Particula();
-    Particula(double x, double y, double v, double ang);
+    Particula(double x, double y, double v, double ang,double masa, double radio);
     void mensaje();
     void moverprueba();
     void moverMRU();//De prueba para pasar al movimiento parabolico

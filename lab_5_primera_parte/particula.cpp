@@ -2,16 +2,19 @@
 #include <iostream>
 using namespace std;
 Particula::Particula() {}
-Particula::Particula(double x, double y, double v, double ang)
+Particula::Particula(double x, double y, double v, double ang, double masa, double radio)
 {
     this->x=x;
     this->y=y;
     this->v=v;
     this->ang=ang;
+    this->masa = masa;
+    this->radio = radio;
     t=0.01;
     g=9.8;
     tiempo_total=0;
-    CalcularVelocidad();
+    vx = v * cos(ang);
+    vy = v * sin(ang);
 }
 
 void Particula::mensaje()
@@ -52,13 +55,14 @@ void Particula::ActualizarVelocidad()
 
 void Particula::moverpaso()
 {
-    CalcularPosicion();      // mueve x,y
+    ActualizarVelocidad();   // gravedad primero
+    CalcularPosicion();      // mover la partícula
+
+    // Después verificar colisiones
     chequearPiso(0);
     chequearTecho(5);
-    chequearParedDer(10);
     chequearparedIz(0);
-
-    ActualizarVelocidad();   // modifica vy para el siguiente paso
+    chequearParedDer(10);
 }
 
 void Particula::chequearTecho(double techo)
@@ -75,7 +79,7 @@ void Particula::chequearparedIz(double parIz)
     if (x <= parIz) {
         x = parIz;     // evitar traspaso
         vx = -vx;     // rebote horizontal
-        cout << "Tocó la PARED IZQUIERDA"<<endl;
+        cout << "Toco la PARED IZQUIERDA"<<endl;
     }
 }
 
@@ -84,7 +88,7 @@ void Particula::chequearParedDer(double parDer)
     if (x >= parDer) {
         x = parDer;    // evitar traspaso
         vx = -vx;    // rebote horizontal
-        cout << "Tocó la PARED DERECHA"<<endl;
+        cout << "Toco la PARED DERECHA"<<endl;
     }
 }
 

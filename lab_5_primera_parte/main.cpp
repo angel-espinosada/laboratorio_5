@@ -1,11 +1,13 @@
 #include <iostream>
 #include <particula.h>
+#include "ejecucion.h"
 
 using namespace std;
 
 int main()
 {
     cout<<"hola mundo"<<endl;
+    /*
     Particula miParticula;
     miParticula.mensaje();
 
@@ -30,6 +32,24 @@ int main()
 
 
 
+*/
+    Ejecucion sim(0, 10, 0, 5);  // caja: x=0-10, y=0-5
+
+    // Crear 2 partículas
+    Particula p1(0, 0, 15, 45 * M_PI / 180,1,0.8);
+    Particula p2(5, 2, 10, 60 * M_PI / 180,2,0.5);
+
+    // Agregarlas al simulador
+    sim.agregarParticula(p1);
+    sim.agregarParticula(p2);
+
+    // Ejecutar 200 pasos, para que alcance chocar con las paredes
+    for (int i = 0; i < 200; i++)
+    {
+        sim.actualizar();
+        sim.mostrarEstado();
+        cout << "------------------------" << endl;
+    }
 
     cin.get();
     return 0;
