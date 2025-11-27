@@ -36,7 +36,7 @@ void Ejecucion::actualizar()
                     << ": x=" << particulas[i].getX()
                     << " y=" << particulas[i].getY();
         }
-    cout << "Guardando línea en archivo..." << endl;
+    cout << "Guardando linea en archivo..." << endl;
         archivo << "\n";  // salto de línea
     }
 

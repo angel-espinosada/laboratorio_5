@@ -26,3 +26,10 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    double altura=0;
+    altura=ui->Altura->text().toDouble();
+}
+
