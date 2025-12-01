@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGraphicsScene>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,9 +19,13 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
+void on_pushButton_clicked();
+
+protected:
+    void resizeEvent(QResizeEvent *event) override;
 
 private:
     Ui::MainWindow *ui;
+    QGraphicsScene *escena;
 };
 #endif // MAINWINDOW_H
