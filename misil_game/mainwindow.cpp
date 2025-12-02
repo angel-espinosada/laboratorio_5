@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     //QGraphicsRectItem *cuadrado1 = new QGraphicsRectItem(100, 100, 10, 100);
     Escenario *esc = new Escenario(escena);
     esc->crearSuelo();
+    esc->crearObstaculos();
 
     //cuadrado->setBrush(Qt::red);
     //cuadrado1->setBrush(Qt::green);
