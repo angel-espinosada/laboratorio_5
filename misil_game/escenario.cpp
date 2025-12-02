@@ -14,7 +14,7 @@ void Escenario::crearFondo()
 
 void Escenario::crearSuelo()
 {
-    suelo = new QGraphicsRectItem(0, 350, 600, 50);
+    suelo = new QGraphicsRectItem(0, 350, 799, 50);
     suelo->setBrush(QColor(139, 69, 19));  // café
     suelo->setPen(QPen(Qt::black, 2));
 

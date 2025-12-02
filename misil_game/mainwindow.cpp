@@ -18,14 +18,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->escena->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->escena->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    QGraphicsRectItem *cuadrado = new QGraphicsRectItem(150, 100, 10, 100);
-    QGraphicsRectItem *cuadrado1 = new QGraphicsRectItem(100, 100, 10, 100);
+    //QGraphicsRectItem *cuadrado = new QGraphicsRectItem(150, 100, 10, 100);
+    //QGraphicsRectItem *cuadrado1 = new QGraphicsRectItem(100, 100, 10, 100);
     Escenario *esc = new Escenario(escena);
     esc->crearSuelo();
-    cuadrado->setBrush(Qt::red);
-    cuadrado1->setBrush(Qt::green);
-    escena->addItem(cuadrado);
-    escena->addItem(cuadrado1);
+
+    //cuadrado->setBrush(Qt::red);
+    //cuadrado1->setBrush(Qt::green);
+    //escena->addItem(cuadrado);
+   // escena->addItem(cuadrado1);
     Arma *canon = new Arma(escena, 250, 330);
 
 }
